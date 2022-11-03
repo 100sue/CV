@@ -1,16 +1,18 @@
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" 
     integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
     <link rel="stylesheet" href="style.css">
     <title>Curriculum Vitae</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="invoice">
         <div class="left_Side">
             <div class="profileText">
                 <div class="imgBx">
@@ -87,12 +89,9 @@
         <div class="right_Side">
             <div class="about">
                 <h2 class="title2">Profile</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, repellat maxime 
-                    et cum, eaque exercitationem corrupti aut commodi, repudiandae dicta deleniti 
-                    natus saepe itaque eligendi tenetur! <br><br>Dolorum velit illum error beatae nemo 
-                    omnis aperiam iste fugit, accusantium tempore culpa ut reprehenderit magnam. 
-                    Inventore minus, eos in ut consectetur eligendi, explicabo ipsa possimus 
-                    maxime voluptatum repellendus?</p>
+                <p>Conçoit, développe et met au point un projet d'application informatique, de la phase d'étude à son intégration, pour un client ou une entreprise selon des besoins fonctionnels et un cahier des charges.
+                Peut conduire des projets de développement.
+                Peut coordonner une équipe. </p>
             </div>
             <div class="about">
                 <h2 class="title2">Experience</h2>
@@ -207,12 +206,24 @@
                     <li><i class="fa fa-book" aria-hidden="true"></i></i> Booking</li>
                 </ul>
             </div>
-
-
-
         </div>
+
+        <button class="download">Download pdf</button>
 
     </div>
     
+   <script>
+    const div = document.querySelector('.container');
+    const btn = document.querySelector('.download');
+    btn.addEventListener('click', () => {
+        var opt = {
+            margin:       1,
+            filename:     'CV_APPERT_Roland.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 8 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(div).save()})
+   </script>
 </body>
 </html>
